@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
+import utils.graph_analysis as graph
 import utils.process_speechs as process
 import utils.scraping as scraping
 import argparse
