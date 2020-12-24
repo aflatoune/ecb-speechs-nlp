@@ -45,10 +45,6 @@ def prune_head_tail(speech):
     return speech
 
 
-def lower_speech(speech):
-    return re.findall(r'\w+', speech.lower())
-
-
 def hasNumbers(string):
     return bool(re.search(r'\d', string))
 
@@ -100,9 +96,8 @@ def add_ngrams(speech, selected_ngrams):
 
 
 def export_to_csv(dataframe, file):
-    path_data_dir = os.path.join(os.getcwd(), 'data')
     try:
-        dataframe.to_csv(f'{path_data_dir}/{file}', index=False)
+        dataframe.to_csv(f'data/{file}', index=False)
     except FileNotFoundError as e:
         lg.error(e)
     except:
@@ -112,9 +107,8 @@ def export_to_csv(dataframe, file):
 def process_speechs(inputs, output, ngrams, min_df, write_csv):
     dataframe = data_from_csv(os.path.join('data', inputs))
     dataframe = specific_adjustment(dataframe)
-    adjusted_speechs = dataframe.speech.map(lambda x: prune_head_tail(x))
-    dataframe['lower_speech'] = dataframe.speech.map(lambda x: lower_speech(x))
-    processed_speechs = adjusted_speechs.map(lambda x: preprocess_speech(x))
+    dataframe.speech = dataframe.speech.map(lambda x: prune_head_tail(x))
+    processed_speechs = dataframe.speech.map(lambda x: preprocess_speech(x))
 
     selected_ngrams = select_ngrams(
         processed_speechs, ngrams=ngrams, min_df=min_df)

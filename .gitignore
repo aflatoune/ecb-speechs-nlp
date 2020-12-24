@@ -130,3 +130,6 @@ dmypy.json
 
 # Selenium
 geckodriver
+
+# Papers directory
+papers/

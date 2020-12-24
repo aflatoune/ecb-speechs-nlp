@@ -124,9 +124,8 @@ def scrap_content(links, pause=0, balise='article'):
 
 
 def export_to_csv(dataframe, file):
-    path_data_dir = os.path.join(os.getcwd(), 'data')
     try:
-        dataframe.to_csv(f'{path_data_dir}/{file}', index=False)
+        dataframe.to_csv(f'data/{file}', index=False)
     except FileNotFoundError as e:
         lg.error(e)
     except:

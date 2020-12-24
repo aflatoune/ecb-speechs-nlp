@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
-import utils.graph_analysis as graph
 import utils.process_speechs as process
 import utils.scraping as scraping
 import argparse
@@ -12,9 +11,9 @@ lg.basicConfig(level=lg.INFO)
 
 
 def check_availability(file):
-    path_data_dir = os.path.join(os.getcwd(), 'data')
+    #path_data_dir = os.path.join(os.getcwd(), 'data')
     try:
-        if os.path.isfile(f'{path_data_dir}/{file}'):
+        if os.path.isfile(f'data/{file}'):
             lg.warning(
                 f'{file} is already existing. Do you want to erase it?')
             choice = input('y/n? ')
@@ -36,15 +35,15 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument('--scrap', action='store_true',
                         help='Decide whether to scrap data or not')
-    parser.add_argument('--prep', action='store_true',
-                        help='Decide wheter to process some data or not')
     parser.add_argument('-n', '--file_name', type=str,
                         help='Scrapped data file name')
-    parser.add_argument('-l', '--lang', nargs='*', type=str,
+    parser.add_argument('-l', '--lang', nargs='*', type=str, default='en',
                         help='List of languages to scrap')
     parser.add_argument('-y', '--years', nargs='*', type=int,
                         help=('Range of years to scrap. If only one value is',
                               'passed, it is considered as an upper bound.'))
+    parser.add_argument('--prep', action='store_true',
+                        help='Decide wheter to process some data or not')
     parser.add_argument('-i', '--inputs', type=str,
                         help='CSV file containing the scrapped speechs')
     parser.add_argument('-o', '--output', type=str,
