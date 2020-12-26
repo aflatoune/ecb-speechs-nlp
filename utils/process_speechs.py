@@ -90,8 +90,8 @@ def union_ngrams(*args):
 
 def add_ngrams(speech, selected_ngrams):
     for ngram in selected_ngrams:
-        speech = re.sub(ngram[0] + ' ' + ngram[1],
-                        ngram[0] + '_' + ngram[1], speech)
+        speech = re.sub(ngram.split()[0] + ' ' + ngram.split()[1],
+                        ngram.split()[0] + '_' + ngram.split()[1], speech)
     return speech
 
 
@@ -121,7 +121,3 @@ def process_speechs(inputs, output, ngrams, min_df, write_csv):
         export_to_csv(dataframe, output)
 
     lg.info(f'### Preprocessing is over, a file {output} has been created ###')
-
-
-if __name__ == '__main__':
-    pass

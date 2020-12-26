@@ -156,7 +156,3 @@ def scrap_speechs(lang, years, file_name, write_csv):
     if write_csv:
         export_to_csv(data, file_name)
         lg.info(f'### {data.shape[0]} speechs have been scraped ###')
-
-
-if __name__ == "__main__":
-    pass
