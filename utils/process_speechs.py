@@ -45,10 +45,6 @@ def prune_head_tail(speech):
     return speech
 
 
-def lower_speech(speech):
-    return re.findall(r'\w+', speech.lower())
-
-
 def hasNumbers(string):
     return bool(re.search(r'\d', string))
 
@@ -94,15 +90,14 @@ def union_ngrams(*args):
 
 def add_ngrams(speech, selected_ngrams):
     for ngram in selected_ngrams:
-        speech = re.sub(ngram[0] + ' ' + ngram[1],
-                        ngram[0] + '_' + ngram[1], speech)
+        speech = re.sub(ngram.split()[0] + ' ' + ngram.split()[1],
+                        ngram.split()[0] + '_' + ngram.split()[1], speech)
     return speech
 
 
 def export_to_csv(dataframe, file):
-    path_data_dir = os.path.join(os.getcwd(), 'data')
     try:
-        dataframe.to_csv(f'{path_data_dir}/{file}', index=False)
+        dataframe.to_csv(f'data/{file}', index=False)
     except FileNotFoundError as e:
         lg.error(e)
     except:
@@ -112,9 +107,8 @@ def export_to_csv(dataframe, file):
 def process_speechs(inputs, output, ngrams, min_df, write_csv):
     dataframe = data_from_csv(os.path.join('data', inputs))
     dataframe = specific_adjustment(dataframe)
-    adjusted_speechs = dataframe.speech.map(lambda x: prune_head_tail(x))
-    dataframe['lower_speech'] = dataframe.speech.map(lambda x: lower_speech(x))
-    processed_speechs = adjusted_speechs.map(lambda x: preprocess_speech(x))
+    dataframe.speech = dataframe.speech.map(lambda x: prune_head_tail(x))
+    processed_speechs = dataframe.speech.map(lambda x: preprocess_speech(x))
 
     selected_ngrams = select_ngrams(
         processed_speechs, ngrams=ngrams, min_df=min_df)
@@ -127,7 +121,3 @@ def process_speechs(inputs, output, ngrams, min_df, write_csv):
         export_to_csv(dataframe, output)
 
     lg.info(f'### Preprocessing is over, a file {output} has been created ###')
-
-
-if __name__ == '__main__':
-    pass
