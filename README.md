@@ -4,7 +4,7 @@
 
 In this repo, you'll find three scripts to scrap, process and (briefly) analyze the content of the European Central Bank (ECB) communication. We focus on the introductory statement of the President of the ECB. This statement is given during the press conferences following the Governing Council's meetings. All the press conferences can be found [here](https://www.ecb.europa.eu/press/pressconf/html/index.en.html).
 
-Note that until until December 4, 2014, statements are only available in English.
+Note that until December 4, 2014, statements are only available in English.
 
 ## Usage
 
