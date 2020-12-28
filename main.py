@@ -24,7 +24,7 @@ def check_availability(file):
             else:
                 return False
         else:
-            return False
+            return True
     except FileNotFoundError as e:
         lg.error(e)
     except:
