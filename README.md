@@ -23,6 +23,6 @@ To process `raw_data.csv` and store the result in a file named `processed_data.c
 python main.py --prep -i raw_data.csv -o processed_data.csv
 ```
 
-## Analyze
+## Analysis
 
 `utils/base_analysis.py` contains the code to conduct a summary analysis of statements content (words count, top words, readability scores). The notebook `basic_analysis.ipynb` provides an illustration.
