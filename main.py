@@ -52,8 +52,8 @@ def parse_arguments():
     parser.add_argument('--ngrams', nargs=2, type=int, default=[2, 2],
                         help=('The lower and upper boundary of the range of',
                               'n-values for different n-grams to be extracted'))
-    parser.add_argument('--min_df', type=float, default=.8,
-                        help=('When building the vocabulary of ngrams ignore',
+    parser.add_argument('--min_df', type=float, default=.7,
+                        help=('When building the vocabulary of ngrams, ignore',
                               'terms that have a document frequency strictly',
                               'lower than the given threshold'))
     return parser.parse_args()
