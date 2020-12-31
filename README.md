@@ -17,7 +17,7 @@ To scrap all English statements between 2006 and 2020 and store them in a file n
 python main.py --scrap -n raw_data.csv -l en -y 2006 2021
 ```
 
-To process `raw_data.csv` and store the result in a file named `processed_data.csv` and containing an additional column for processed statements:
+To process `raw_data.csv` and store the result in a file named `processed_data.csv` containing an additional column for processed statements:
 
 ```shell
 python main.py --prep -i raw_data.csv -o processed_data.csv
