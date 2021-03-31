@@ -28,7 +28,7 @@ def create_webdriver(active_options=False):
     else:
         options = None
 
-    path_driver = 'C:/Users/Daniel/Documents/geckodriver-v0.28.0-win64/geckodriver'
+    path_driver = 'C:/Users/****/Documents/geckodriver-v0.28.0-win64/geckodriver'
     pager = webdriver.Firefox(executable_path=path_driver, options=options)
     return pager
 
