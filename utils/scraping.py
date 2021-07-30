@@ -21,14 +21,16 @@ lg.basicConfig(level=lg.INFO)
 urllibLogger.setLevel(lg.WARNING)
 
 
-def create_webdriver(active_options=False):
+def create_webdriver(driver_path=None, active_options=False):
     if active_options:
         options = Options()
         options.add_argument('--headless')
     else:
         options = None
-
-    path_driver = 'C:/Users/****/Documents/geckodriver-v0.28.0-win64/geckodriver'
+    if driver_path is not None:
+        path_driver = driver_path
+    else:
+        path_driver = 'geckodriver'
     pager = webdriver.Firefox(executable_path=path_driver, options=options)
     return pager
 
