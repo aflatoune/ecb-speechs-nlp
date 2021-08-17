@@ -134,18 +134,6 @@ def export_to_csv(dataframe, file):
         lg.error('Destination unknown')
 
 
-def parse_arguments():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-n', '--name', type=str,
-                        help='Scrapped data file name')
-    parser.add_argument('-l', '--lang', nargs='*', type=str,
-                        help='List of languages to scrap')
-    parser.add_argument('-y', '--years', nargs='*', type=int,
-                        help=('Range of years to scrap. If only one value is',
-                              'passed, it is considered as an upper bound.'))
-    return parser.parse_args()
-
-
 def scrap_speechs(lang, years, file_name, write_csv):
     url = 'https://www.ecb.europa.eu/press/pressconf/html/index.en.html'
     driver = create_webdriver(active_options=False)
